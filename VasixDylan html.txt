@@ -130,7 +130,7 @@
     <div class="box"><div id="seconds" class="flip-card"></div><div class="label">SECONDS</div></div>
   </div>
 
-  <img src="your-photo.jpg" alt="Us">
+  <img src="VxD.jpg" alt="Us">
 
   <!-- 🔊 Crowd sound -->
   <audio id="crowd" loop>
