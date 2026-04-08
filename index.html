@@ -38,6 +38,7 @@ section {
   text-align: center;
   padding: 40px 20px;
   position: relative;
+  overflow: hidden;
 }
 
 /* HERO */
@@ -69,6 +70,7 @@ section {
   transform: translateY(40px);
   opacity: 0;
   transition: all 1s ease;
+  z-index: 2;
 }
 
 .card.show {
@@ -79,14 +81,14 @@ section {
 h2 { font-size: 36px; margin-bottom: 10px; }
 p { font-size: 18px; opacity: 0.8; line-height: 1.4; }
 
-/* PARALLAX */
+/* PARALLAX FIXED FOR MOBILE */
 .parallax {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.4);
-  transform: scale(1.1);
+  background-repeat: no-repeat;
+  filter: brightness(0.45);
 }
 
 /* INPUTS */
@@ -124,10 +126,14 @@ button:hover {
   50% { transform: translateY(-10px); }
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media (max-width: 600px) {
   h1 { font-size: 40px; }
   h2 { font-size: 28px; }
+
+  .parallax {
+    background-attachment: scroll;
+  }
 }
 </style>
 </head>
@@ -146,7 +152,7 @@ button:hover {
 
 <!-- SAGRADA FAMILIA -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80')"></div>
   <div class="card reveal">
     <h2>Sagrada Família ⛪</h2>
     <p>Step into Gaudí’s masterpiece — where architecture becomes emotion.</p>
@@ -155,7 +161,7 @@ button:hover {
 
 <!-- CASA BATLLO -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b?auto=format&fit=crop&w=1200&q=80')"></div>
   <div class="card reveal">
     <h2>Casa Batlló 🎨</h2>
     <p>Color, light, and imagination redefined in the heart of Barcelona.</p>
@@ -164,7 +170,7 @@ button:hover {
 
 <!-- PARK GUELL -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1526481280698-8fcc13fd6a38?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1526481280698-8fcc13fd6a38?auto=format&fit=crop&w=1200&q=80')"></div>
   <div class="card reveal">
     <h2>Park Güell 🌿</h2>
     <p>Where the city meets nature in mosaic dreams above Barcelona.</p>
@@ -184,18 +190,18 @@ button:hover {
   </div>
 </section>
 
-<!-- COUNTDOWN (FIXED) -->
+<!-- COUNTDOWN -->
 <section>
-  <div class="parallax" style="background-image:url('VxD.jpg')"></div>
+  <div class="parallax" style="background-image:url('VxD.jpg'); background-size:contain; background-color:black;"></div>
 
   <div class="card reveal">
-    <h2>Countdown to Barcelona ✈️</h2>
+    <h2>Countdown to Barcelona</h2>
     <h1 id="countdown" style="font-size:48px; margin-top:10px;"></h1>
   </div>
 </section>
 
 <script>
-/* REVEAL ANIMATION */
+/* REVEAL */
 const cards = document.querySelectorAll(".reveal");
 
 const obs = new IntersectionObserver(entries => {
@@ -238,8 +244,8 @@ function render() {
 
 render();
 
-/* COUNTDOWN (WORKING 100%) */
-const targetDate = new Date("2026-06-01T00:00:00").getTime();
+/* COUNTDOWN */
+const targetDate = new Date("2026-04-16T20:50:00").getTime();
 
 function updateCountdown() {
   const el = document.getElementById("countdown");
