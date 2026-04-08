@@ -21,7 +21,6 @@ body {
   overflow-x: hidden;
 }
 
-/* 🌌 GLOBAL BACKDROP */
 .bg {
   position: fixed;
   inset: 0;
@@ -29,7 +28,6 @@ body {
   background: radial-gradient(circle at top, #1a1a1a, #000);
 }
 
-/* ✨ SCROLL SECTIONS */
 section {
   min-height: 100vh;
   display: flex;
@@ -40,7 +38,6 @@ section {
   position: relative;
 }
 
-/* 🎬 HERO */
 .hero h1 {
   font-size: 52px;
   letter-spacing: 2px;
@@ -59,7 +56,6 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 🌆 STORY CARDS */
 .card {
   max-width: 600px;
   background: rgba(255,255,255,0.06);
@@ -76,18 +72,9 @@ section {
   opacity: 1;
 }
 
-h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
+h2 { font-size: 36px; margin-bottom: 10px; }
+p { font-size: 18px; opacity: 0.8; line-height: 1.4; }
 
-p {
-  font-size: 18px;
-  opacity: 0.8;
-  line-height: 1.4;
-}
-
-/* 🌊 PARALLAX BACKGROUNDS */
 .parallax {
   position: absolute;
   inset: 0;
@@ -97,7 +84,6 @@ p {
   transform: scale(1.1);
 }
 
-/* 🧭 RSVP */
 input, button {
   width: 100%;
   padding: 12px;
@@ -128,7 +114,6 @@ button:hover {
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* 🔥 FLOAT ANIMATION */
 .float {
   animation: float 4s ease-in-out infinite;
 }
@@ -138,7 +123,6 @@ button:hover {
   50% { transform: translateY(-10px); }
 }
 
-/* 📱 MOBILE OPTIMIZED */
 @media (max-width: 600px) {
   h1 { font-size: 40px; }
   h2 { font-size: 28px; }
@@ -160,7 +144,7 @@ button:hover {
 
 <!-- SAGRADA FAMILIA -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded')"></div>
+  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="card reveal">
     <h2>Sagrada Família ⛪</h2>
     <p>Step into Gaudí’s masterpiece — where architecture becomes emotion.</p>
@@ -169,7 +153,7 @@ button:hover {
 
 <!-- CASA BATLLO -->
 <section>
-  <div class="parallax" style="background-image:url'https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="card reveal">
     <h2>Casa Batlló 🎨</h2>
     <p>Color, light, and imagination redefined in the heart of Barcelona.</p>
@@ -198,8 +182,18 @@ button:hover {
   </div>
 </section>
 
+<!-- COUNTDOWN -->
+<section>
+  <div class="parallax" style="background-image:url('VxD.jpg')"></div>
+
+  <div class="card reveal">
+    <h2>Countdown to Barcelona</h2>
+    <h1 id="countdown" style="font-size:48px; margin-top:10px;"></h1>
+  </div>
+</section>
+
 <script>
-/* ✨ SCROLL REVEAL (Apple-style) */
+/* REVEAL */
 const cards = document.querySelectorAll(".reveal");
 
 const obs = new IntersectionObserver(entries => {
@@ -210,7 +204,7 @@ const obs = new IntersectionObserver(entries => {
 
 cards.forEach(c => obs.observe(c));
 
-/* 💾 RSVP */
+/* RSVP */
 function add() {
   const name = document.getElementById("name").value;
   const msg = document.getElementById("msg").value;
@@ -241,17 +235,8 @@ function render() {
 }
 
 render();
-</script>
-  
-<!-- COUNTDOWN -->
-<section>
-  <div class="parallax" style="background-image:url('VxD.jpg')"></div>
 
-  <div class="card reveal">
-    <h2>Countdown to Barcelona </h2>
-    <h1 id="countdown" style="font-size:48px; margin-top:10px;"></h1>
-  </div>
-// ⏳ COUNTDOWN TIMER
+/* COUNTDOWN */
 const targetDate = new Date("2026-06-01T00:00:00").getTime();
 
 function updateCountdown() {
@@ -269,8 +254,7 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-  
-</section>
-  
+</script>
+
 </body>
 </html>
