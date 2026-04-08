@@ -153,8 +153,8 @@ button:hover {
 <!-- HERO -->
 <section class="hero">
   <div>
-    <h1 class="float">Barcelona 2026 ✈️</h1>
-    <p>The experience begins before we even land.</p>
+    <h1 class="float">Barcelona 2026</h1>
+    <p>Where the awesome tour by Chloe awaits.</p>
   </div>
 </section>
 
@@ -169,7 +169,7 @@ button:hover {
 
 <!-- CASA BATLLO -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b')"></div>
+  <div class="parallax" style="background-image:url'https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="card reveal">
     <h2>Casa Batlló 🎨</h2>
     <p>Color, light, and imagination redefined in the heart of Barcelona.</p>
@@ -178,7 +178,7 @@ button:hover {
 
 <!-- PARK GUELL -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1526481280698-8fcc13fd6a38')"></div>
+  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1526481280698-8fcc13fd6a38?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="card reveal">
     <h2>Park Güell 🌿</h2>
     <p>Where the city meets nature in mosaic dreams above Barcelona.</p>
@@ -242,6 +242,35 @@ function render() {
 
 render();
 </script>
+  
+<!-- COUNTDOWN -->
+<section>
+  <div class="parallax" style="background-image:url('VxD.jpg')"></div>
 
+  <div class="card reveal">
+    <h2>Countdown to Barcelona </h2>
+    <h1 id="countdown" style="font-size:48px; margin-top:10px;"></h1>
+  </div>
+// ⏳ COUNTDOWN TIMER
+const targetDate = new Date("2026-06-01T00:00:00").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+  
+</section>
+  
 </body>
 </html>
