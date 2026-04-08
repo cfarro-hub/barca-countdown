@@ -21,7 +21,6 @@ body {
   overflow-x: hidden;
 }
 
-/* BACKGROUND */
 .bg {
   position: fixed;
   inset: 0;
@@ -29,7 +28,6 @@ body {
   background: radial-gradient(circle at top, #1a1a1a, #000);
 }
 
-/* SECTIONS */
 section {
   min-height: 100vh;
   display: flex;
@@ -41,26 +39,16 @@ section {
   overflow: hidden;
 }
 
-/* HERO */
 .hero h1 {
   font-size: 52px;
-  letter-spacing: 2px;
-  animation: fadeUp 1.2s ease;
 }
 
 .hero p {
   opacity: 0.7;
   margin-top: 10px;
   font-size: 18px;
-  animation: fadeUp 1.6s ease;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* CARD */
 .card {
   max-width: 600px;
   background: rgba(255,255,255,0.06);
@@ -79,61 +67,21 @@ section {
 }
 
 h2 { font-size: 36px; margin-bottom: 10px; }
-p { font-size: 18px; opacity: 0.8; line-height: 1.4; }
+p { font-size: 18px; opacity: 0.8; }
 
-/* PARALLAX FIXED FOR MOBILE */
 .parallax {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.45);
-}
-
-/* INPUTS */
-input, button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
-}
-
-input {
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-
-button {
-  background: #004D98;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #A50044;
-}
-
-/* FLOAT */
-.float {
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  filter: brightness(0.5);
 }
 
 /* MOBILE FIX */
 @media (max-width: 600px) {
   h1 { font-size: 40px; }
   h2 { font-size: 28px; }
-
-  .parallax {
-    background-attachment: scroll;
-  }
 }
 </style>
 </head>
@@ -145,63 +93,50 @@ button:hover {
 <!-- HERO -->
 <section class="hero">
   <div>
-    <h1 class="float">Barcelona 2026 ✈️</h1>
+    <h1>Barcelona 2026 </h1>
     <p>Where the awesome tour by Chloe awaits.</p>
   </div>
 </section>
 
 <!-- SAGRADA FAMILIA -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.pexels.com/photos/161853/sagrada-familia-barcelona-spain-architecture-161853.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
   <div class="card reveal">
     <h2>Sagrada Família ⛪</h2>
     <p>Step into Gaudí’s masterpiece — where architecture becomes emotion.</p>
   </div>
 </section>
 
-<!-- CASA BATLLO -->
+<!-- CASA BATLLO (FIXED IMAGE SOURCE) -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1583778176476-4a8b02a64c6b?auto=format&fit=crop&w=1200&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
   <div class="card reveal">
     <h2>Casa Batlló 🎨</h2>
     <p>Color, light, and imagination redefined in the heart of Barcelona.</p>
   </div>
 </section>
 
-<!-- PARK GUELL -->
+<!-- PARK GUELL (FIXED IMAGE SOURCE) -->
 <section>
-  <div class="parallax" style="background-image:url('https://images.unsplash.com/photo-1526481280698-8fcc13fd6a38?auto=format&fit=crop&w=1200&q=80')"></div>
+  <div class="parallax" style="background-image:url('https://images.pexels.com/photos/3881104/pexels-photo-3881104.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
   <div class="card reveal">
     <h2>Park Güell 🌿</h2>
     <p>Where the city meets nature in mosaic dreams above Barcelona.</p>
   </div>
 </section>
 
-<!-- RSVP -->
-<section>
-  <div class="card">
-    <h2>RSVP</h2>
-
-    <input id="name" placeholder="Your Name"/>
-    <input id="msg" placeholder="Message"/>
-    <button onclick="add()">Confirm Attendance</button>
-
-    <div id="list"></div>
-  </div>
-</section>
-
 <!-- COUNTDOWN -->
 <section>
-  <div class="parallax" style="background-image:url('VxD.jpg'); background-size:contain; background-color:black;"></div>
+  <div class="parallax" style="background-image:url('https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
 
   <div class="card reveal">
-    <h2>Countdown to Barcelona</h2>
-    <h1 id="countdown" style="font-size:48px; margin-top:10px;"></h1>
+    <h2>Countdown to Barcelona </h2>
+    <h1 id="countdown" style="font-size:48px;"></h1>
   </div>
 </section>
 
 <script>
-/* REVEAL */
+/* reveal */
 const cards = document.querySelectorAll(".reveal");
 
 const obs = new IntersectionObserver(entries => {
@@ -212,57 +147,18 @@ const obs = new IntersectionObserver(entries => {
 
 cards.forEach(c => obs.observe(c));
 
-/* RSVP */
-function add() {
-  const name = document.getElementById("name").value;
-  const msg = document.getElementById("msg").value;
-
-  if (!name) return;
-
-  let data = JSON.parse(localStorage.getItem("guests") || "[]");
-  data.push({ name, msg });
-  localStorage.setItem("guests", JSON.stringify(data));
-
-  render();
-}
-
-function render() {
-  let data = JSON.parse(localStorage.getItem("guests") || "[]");
-  const list = document.getElementById("list");
-
-  list.innerHTML = "<h3 style='margin-top:20px'>Guest List</h3>";
-
-  data.forEach(g => {
-    list.innerHTML += `
-      <div class="guest">
-        <strong>${g.name}</strong><br/>
-        <small>${g.msg || ""}</small>
-      </div>
-    `;
-  });
-}
-
-render();
-
-/* COUNTDOWN */
+/* countdown */
 const targetDate = new Date("2026-04-16T20:50:00").getTime();
 
 function updateCountdown() {
   const el = document.getElementById("countdown");
-  if (!el) return;
-
   const now = new Date().getTime();
   const diff = targetDate - now;
 
-  if (diff <= 0) {
-    el.innerHTML = "WE'RE IN BARCELONA ✈️";
-    return;
-  }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((diff%(1000*60))/1000);
 
   el.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
