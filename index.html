@@ -21,6 +21,7 @@ body {
   overflow-x: hidden;
 }
 
+/* BACKGROUND */
 .bg {
   position: fixed;
   inset: 0;
@@ -28,6 +29,7 @@ body {
   background: radial-gradient(circle at top, #1a1a1a, #000);
 }
 
+/* SECTIONS */
 section {
   min-height: 100vh;
   display: flex;
@@ -38,6 +40,7 @@ section {
   position: relative;
 }
 
+/* HERO */
 .hero h1 {
   font-size: 52px;
   letter-spacing: 2px;
@@ -56,6 +59,7 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* CARD */
 .card {
   max-width: 600px;
   background: rgba(255,255,255,0.06);
@@ -75,6 +79,7 @@ section {
 h2 { font-size: 36px; margin-bottom: 10px; }
 p { font-size: 18px; opacity: 0.8; line-height: 1.4; }
 
+/* PARALLAX */
 .parallax {
   position: absolute;
   inset: 0;
@@ -84,6 +89,7 @@ p { font-size: 18px; opacity: 0.8; line-height: 1.4; }
   transform: scale(1.1);
 }
 
+/* INPUTS */
 input, button {
   width: 100%;
   padding: 12px;
@@ -108,12 +114,7 @@ button:hover {
   background: #A50044;
 }
 
-.guest {
-  margin-top: 10px;
-  padding: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
+/* FLOAT */
 .float {
   animation: float 4s ease-in-out infinite;
 }
@@ -123,6 +124,7 @@ button:hover {
   50% { transform: translateY(-10px); }
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
   h1 { font-size: 40px; }
   h2 { font-size: 28px; }
@@ -137,7 +139,7 @@ button:hover {
 <!-- HERO -->
 <section class="hero">
   <div>
-    <h1 class="float">Barcelona 2026</h1>
+    <h1 class="float">Barcelona 2026 ✈️</h1>
     <p>Where the awesome tour by Chloe awaits.</p>
   </div>
 </section>
@@ -182,18 +184,18 @@ button:hover {
   </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- COUNTDOWN (FIXED) -->
 <section>
   <div class="parallax" style="background-image:url('VxD.jpg')"></div>
 
   <div class="card reveal">
-    <h2>Countdown to Barcelona</h2>
+    <h2>Countdown to Barcelona ✈️</h2>
     <h1 id="countdown" style="font-size:48px; margin-top:10px;"></h1>
   </div>
 </section>
 
 <script>
-/* REVEAL */
+/* REVEAL ANIMATION */
 const cards = document.querySelectorAll(".reveal");
 
 const obs = new IntersectionObserver(entries => {
@@ -236,20 +238,27 @@ function render() {
 
 render();
 
-/* COUNTDOWN */
+/* COUNTDOWN (WORKING 100%) */
 const targetDate = new Date("2026-06-01T00:00:00").getTime();
 
 function updateCountdown() {
+  const el = document.getElementById("countdown");
+  if (!el) return;
+
   const now = new Date().getTime();
   const diff = targetDate - now;
+
+  if (diff <= 0) {
+    el.innerHTML = "WE'RE IN BARCELONA ✈️";
+    return;
+  }
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  document.getElementById("countdown").innerHTML =
-    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  el.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
 setInterval(updateCountdown, 1000);
